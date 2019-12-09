@@ -2,7 +2,7 @@
 FROM alpine
 
 ARG NIX_VERSION
-ENV NIX_VERSION ${NIX_VERSION:-2.2.1}
+ENV NIX_VERSION ${NIX_VERSION:-2.3.1}
 ARG LANG
 ENV LANG ${LANG:-"en_US.UTF-8"}
 
@@ -29,7 +29,7 @@ RUN echo ". ${ENV}" >> ${HOME}/.profile
 # All subsequent "RUN" will use a login shell
 SHELL ["/usr/bin/env", "bash", "-l", "-c"]
 
-RUN nix-channel --add https://nixos.org/channels/nixpkgs-19.03-darwin nixpkgs \
+RUN nix-channel --add https://nixos.org/channels/nixpkgs-19.09-darwin nixpkgs \
     && nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable \
     && nix-channel --update
 
